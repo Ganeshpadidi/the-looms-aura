@@ -38,6 +38,24 @@ const verifyToken = (req, res, next) => {
     }
 };
 
+// Public: Get all products
+router.get('/', async (req, res) => {
+    try {
+        const result = await query(`
+            SELECT p.id, p.name, p.price, p.description, 
+                   c.name as collection_name, 
+                   s.name as subcollection_name 
+            FROM products p 
+            LEFT JOIN collections c ON p.collection_id = c.id 
+            LEFT JOIN subcollections s ON p.subcollection_id = s.id
+            ORDER BY p.id DESC
+        `);
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // Public: Get product image
 router.get('/:id/image', async (req, res) => {
     const { id } = req.params;

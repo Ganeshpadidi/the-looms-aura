@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 function Navbar() {
     const [showCollections, setShowCollections] = useState(false);
@@ -37,7 +37,7 @@ function Navbar() {
                     onMouseLeave={() => setShowCollections(false)}
                 >
                     <Link to="/" className="navbar-brand">
-                        <img src="/images/logo.png" alt="The Looms Aura Logo" className="navbar-logo" />
+                        <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="The Looms Aura Logo" className="navbar-logo" />
                         <h1 className="gradient-text">The Looms Aura</h1>
                     </Link>
 

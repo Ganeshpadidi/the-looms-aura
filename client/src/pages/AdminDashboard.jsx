@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AdminDashboard.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 function AdminDashboard() {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('product');
     const [collections, setCollections] = useState([]);
     const [subcollections, setSubcollections] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
 
@@ -45,6 +46,7 @@ function AdminDashboard() {
 
         fetchCollections();
         fetchSubcollections();
+        fetchProducts();
     }, [navigate]);
 
     const fetchCollections = async () => {
@@ -62,6 +64,15 @@ function AdminDashboard() {
             setSubcollections(response.data);
         } catch (err) {
             console.error('Error fetching subcollections:', err);
+        }
+    };
+
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get(`${API_URL}/products`);
+            setProducts(response.data);
+        } catch (err) {
+            console.error('Error fetching products:', err);
         }
     };
 
@@ -213,6 +224,26 @@ function AdminDashboard() {
         }
     };
 
+    const handleDeleteProduct = async (id, name) => {
+        if (!window.confirm(`Are you sure you want to delete "${name}"?`)) {
+            return;
+        }
+
+        const token = localStorage.getItem('adminToken');
+        try {
+            setLoading(true);
+            await axios.delete(`${API_URL}/products/${id}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            setMessage({ type: 'success', text: 'Product deleted successfully!' });
+            fetchProducts();
+        } catch (err) {
+            setMessage({ type: 'error', text: err.response?.data?.error || 'Failed to delete product' });
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const handleLogout = () => {
         localStorage.removeItem('adminToken');
         localStorage.removeItem('adminUsername');
@@ -261,6 +292,12 @@ function AdminDashboard() {
                     >
                         Manage Subcollections
                     </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'manage-products' ? 'active' : ''}`}
+                        onClick={() => { setActiveTab('manage-products'); setMessage({ type: '', text: '' }); }}
+                    >
+                        Manage Products
+                    </button>
                 </div>
 
                 <div className="dashboard-content">
@@ -271,6 +308,7 @@ function AdminDashboard() {
                             {activeTab === 'subcollection' && 'Add New Subcollection'}
                             {activeTab === 'manage-collections' && 'Manage Collections'}
                             {activeTab === 'manage-subcollections' && 'Manage Subcollections'}
+                            {activeTab === 'manage-products' && 'Manage Products'}
                         </h2>
 
                         {message.text && (
@@ -389,6 +427,40 @@ function AdminDashboard() {
                                                 </div>
                                                 <button
                                                     onClick={() => handleDeleteSubcollection(subcollection.collection_id, subcollection.id, subcollection.name)}
+                                                    className="btn btn-danger"
+                                                    disabled={loading}
+                                                >
+                                                    🗑️ Delete
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {activeTab === 'manage-products' && (
+                            <div className="manage-section">
+                                {products.length === 0 ? (
+                                    <p className="empty-message">No products found. Add one from the "Add Product" tab.</p>
+                                ) : (
+                                    <div className="items-list">
+                                        {products.map(product => (
+                                            <div key={product.id} className="item-card product-card">
+                                                <div className="item-image" style={{ width: '60px', height: '60px', marginRight: '1rem' }}>
+                                                    <img
+                                                        src={`${API_URL}/products/${product.id}/image`}
+                                                        alt={product.name}
+                                                        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }}
+                                                    />
+                                                </div>
+                                                <div className="item-info">
+                                                    <h3>{product.name}</h3>
+                                                    <p style={{ fontWeight: 'bold' }}>₹{product.price}</p>
+                                                    <p className="item-parent">{product.collection_name} &gt; {product.subcollection_name}</p>
+                                                </div>
+                                                <button
+                                                    onClick={() => handleDeleteProduct(product.id, product.name)}
                                                     className="btn btn-danger"
                                                     disabled={loading}
                                                 >

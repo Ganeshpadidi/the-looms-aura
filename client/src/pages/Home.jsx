@@ -8,7 +8,7 @@ function Home() {
                 <div className="hero-overlay"></div>
                 <div className="container hero-content">
                     <div className="hero-logo-container fade-in">
-                        <img src="/images/logo.png" alt="The Looms Aura" className="hero-logo" />
+                        <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="The Looms Aura" className="hero-logo" />
                     </div>
                     <Link to="/collections" className="btn btn-primary fade-in" style={{ animationDelay: '0.3s' }}>
                         Explore Collections
