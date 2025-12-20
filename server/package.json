@@ -1,10 +1,15 @@
 {
   "name": "looms-aura-server",
+  "homepage": "https://ganeshpadidi.github.io/the-looms-aura",
   "version": "1.0.0",
   "description": "Backend for The Looms Aura",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "server": "node src/server.js",
     "dev": "nodemon src/server.js",
     "seed": "node src/seed.js"
   },

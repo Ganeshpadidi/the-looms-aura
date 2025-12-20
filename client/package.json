@@ -1,5 +1,6 @@
 {
   "name": "looms-aura-client",
+  "homepage": "https://ganeshpadidi.github.io/the-looms-aura",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

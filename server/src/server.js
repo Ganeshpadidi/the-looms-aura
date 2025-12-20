@@ -14,8 +14,7 @@ app.use(cors({
     origin: [
         'http://localhost:5173',
         'https://ganeshpadidi.github.io',
-        'https://ganeshpadidi.github.io/the-looms-aura',
-        'https://the-looms-aura-frontend.onrender.com'
+        'https://ganeshpadidi.github.io/the-looms-aura'
     ],
     credentials: true
 }));
@@ -32,7 +31,7 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'Server is running' });
 });
 
-// Error handling middleware
+// Error handling
 app.use((err, req, res, next) => {
     console.error('Server error:', err);
     res.status(500).json({ error: err.message || 'Internal server error' });
@@ -40,5 +39,5 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
