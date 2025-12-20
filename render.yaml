@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: the-looms-aura-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    rootDir: server
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: looms-aura-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: looms-aura-db
+    plan: free
+    region: oregon # or any other region

@@ -11,7 +11,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/the-looms-aura">
       <div className="app">
         <Navbar />
         <main className="main-content">

@@ -12,9 +12,10 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors({
     origin: [
-        'http://localhost:5173',  // Local development
-        'https://ganeshpadidi.github.io',  // GitHub Pages (keep for now)
-        'https://the-looms-aura-frontend.onrender.com'  // Render frontend
+        'http://localhost:5173',
+        'https://ganeshpadidi.github.io',
+        'https://ganeshpadidi.github.io/the-looms-aura',
+        'https://the-looms-aura-frontend.onrender.com'
     ],
     credentials: true
 }));
