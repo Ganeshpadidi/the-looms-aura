@@ -104,4 +104,24 @@ router.get('/subcollections/all', async (req, res) => {
     }
 });
 
+// DELETE product (Admin only)
+router.delete('/:id', verifyToken, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await pool.query(
+            'DELETE FROM products WHERE id = $1 RETURNING id',
+            [id]
+        );
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        res.json({ message: 'Product deleted successfully', id });
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        res.status(500).json({ error: 'Failed to delete product' });
+    }
+});
+
 module.exports = router;
