@@ -1,26 +1,20 @@
 {
   "name": "looms-aura-server",
-  "homepage": "https://ganeshpadidi.github.io/the-looms-aura",
   "version": "1.0.0",
-  "description": "Backend for The Looms Aura",
   "main": "src/server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "server": "node src/server.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "seed": "node src/seed.js"
+    "seed": "node seed.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "pg": "^8.11.3",
-    "dotenv": "^16.3.1",
     "cors": "^2.8.5",
-    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
     "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
