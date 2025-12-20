@@ -1,30 +1,31 @@
 :root {
-    /* Color Palette */
+    /* Color Palette - Aesthetic Light Mode Reverted */
     --color-primary: hsl(340, 82%, 52%);
     --color-primary-dark: hsl(340, 82%, 42%);
     --color-secondary: hsl(280, 65%, 60%);
     --color-accent: hsl(30, 95%, 55%);
-    --color-bg: hsl(240, 20%, 8%);
-    --color-surface: hsl(240, 15%, 12%);
-    --color-surface-light: hsl(240, 12%, 18%);
-    --color-text: hsl(0, 0%, 98%);
-    --color-text-muted: hsl(0, 0%, 70%);
-    --color-border: hsl(240, 10%, 25%);
+    --color-bg: hsl(0, 0%, 98%);
+    --color-surface: hsl(0, 0%, 100%);
+    --color-surface-light: hsl(0, 0%, 95%);
+    --color-text: hsl(240, 10%, 15%);
+    --color-text-muted: hsl(240, 5%, 45%);
+    --color-border: hsl(240, 10%, 90%);
+
+    /* Royal Typography */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(340, 82%, 25%) 0%, hsl(280, 65%, 20%) 100%);
-    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(340, 82%, 95%) 0%, hsl(280, 65%, 92%) 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 245, 245, 0.5) 100%);
+    --gradient-royal: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px rgba(227, 28, 121, 0.3);
-
-    /* Typography */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 20px rgba(227, 28, 121, 0.2);
 
     /* Spacing */
     --spacing-xs: 0.5rem;

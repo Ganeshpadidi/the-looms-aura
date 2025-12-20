@@ -6,6 +6,7 @@ import Subcollections from './pages/Subcollections';
 import Products from './pages/Products';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

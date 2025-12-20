@@ -10,15 +10,40 @@ function Home() {
                     <div className="hero-logo-container fade-in">
                         <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="The Looms Aura" className="hero-logo" />
                     </div>
-                    <Link to="/collections" className="btn btn-primary fade-in" style={{ animationDelay: '0.3s' }}>
+                    <h1 className="hero-title fade-in" style={{ animationDelay: '0.3s' }}>
+                        Welcome to The Looms Aura
+                    </h1>
+                    <p className="hero-subtitle fade-in" style={{ animationDelay: '0.5s' }}>
+                        Where tradition meets contemporary sophistication
+                    </p>
+                    <Link to="/collections" className="btn btn-primary fade-in" style={{ animationDelay: '0.7s' }}>
                         Explore Collections
                     </Link>
-                    <h1 className="hero-title fade-in" style={{ animationDelay: '0.5s' }}>
-                        Discover Timeless Elegance
-                    </h1>
-                    <p className="hero-subtitle fade-in" style={{ animationDelay: '0.7s' }}>
-                        Exquisite handcrafted ethnic wear that celebrates tradition and modern aesthetics
-                    </p>
+                </div>
+            </section>
+
+            <section className="our-story fade-in">
+                <div className="container">
+                    <div className="story-grid">
+                        <div className="story-content">
+                            <h2 className="gradient-text">Our Story</h2>
+                            <p className="story-lead">
+                                Step into a world where threads weave tales of tradition, and every garment is a masterpiece of timeless elegance.
+                            </p>
+                            <p>
+                                At The Looms Aura, we believe in more than just weaving fabrics; we craft stories. Each stroke of the shuttle, each intricate pattern, carries with it the essence of centuries-old artistry, passed down through generations of skilled artisans. From the vibrant hues of our sarees to the intricate embroidery of our lehengas, every creation is a labor of love, meticulously crafted to adorn you in unmatched grace and style.
+                            </p>
+                            <p>
+                                Our journey is not just about preserving tradition; it's about reinventing it. Through innovative designs and modern techniques, we breathe new life into age-old crafts, ensuring that every piece resonates with the pulse of contemporary fashion while staying true to our roots.
+                            </p>
+                            <p>
+                                Step into our world of handlooms, where every thread tells a story, and every garment is a testament to the timeless beauty of Indian craftsmanship. Indulge in the luxury of tradition with The Looms Aura – where artistry meets elegance, and every creation is a masterpiece in its own right.
+                            </p>
+                        </div>
+                        <div className="story-image">
+                            <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="The Looms Aura" className="faded-logo" />
+                        </div>
+                    </div>
                 </div>
             </section>
 

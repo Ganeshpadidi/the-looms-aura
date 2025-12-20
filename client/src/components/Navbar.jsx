@@ -77,7 +77,11 @@ function Navbar() {
                 <div className="navbar-links">
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/collections" className="nav-link">Collections</Link>
-                    <Link to="/admin/login" className="nav-link">Admin</Link>
+                    {localStorage.getItem('adminToken') ? (
+                        <Link to="/admin/dashboard" className="nav-link" style={{ color: 'var(--color-primary)' }}>Dashboard</Link>
+                    ) : (
+                        <Link to="/admin/login" className="nav-link">Admin</Link>
+                    )}
                 </div>
             </div>
         </nav>
